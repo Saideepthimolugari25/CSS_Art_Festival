@@ -1,0 +1,763 @@
+.electric-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a2e 0%, #16213e 30%, #1a1a3a 70%, #0f0f2a 100%);
+  animation: screenRumble 4s ease-in-out infinite;
+}
+.storm-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.storm-cloud {
+  position: absolute;
+  background: radial-gradient(ellipse, rgba(20, 20, 60, 0.9) 0%, rgba(30, 30, 80, 0.6) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: cloudDrift 12s ease-in-out infinite;
+}
+.cloud-1 {
+  width: 300px;
+  height: 150px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.cloud-2 {
+  width: 250px;
+  height: 120px;
+  top: 20%;
+  right: 15%;
+  animation-delay: 4s;
+}
+.cloud-3 {
+  width: 200px;
+  height: 100px;
+  top: 15%;
+  left: 60%;
+  animation-delay: 8s;
+}
+.lightning-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(200, 200, 255, 0.05));
+  opacity: 0;
+  z-index: 2;
+  animation: backgroundFlicker 6s infinite;
+}
+.lightning-bolt {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+}
+
+.lightning-bolt::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(45deg, #ffff00, #ffffff, #ffff66);
+  border-radius: 2px;
+  box-shadow: 0 0 20px #ffff00, 0 0 40px #ffffff;
+}
+
+.lightning-1 {
+  top: 15%;
+  left: 20%;
+  width: 200px;
+  height: 400px;
+  animation: zigzagLightning1 3s infinite;
+}
+
+.lightning-1::before {
+  width: 4px;
+  height: 100%;
+  transform: skew(-15deg);
+  clip-path: polygon(0% 0%, 100% 0%, 90% 30%, 100% 30%, 80% 60%, 100% 60%, 70% 100%, 0% 100%, 20% 70%, 0% 70%, 30% 40%, 0% 40%);
+}
+
+.lightning-2 {
+  top: 10%;
+  right: 25%;
+  width: 150px;
+  height: 350px;
+  animation: zigzagLightning2 4s infinite 1s;
+}
+
+.lightning-2::before {
+  width: 3px;
+  height: 100%;
+  transform: skew(20deg);
+  clip-path: polygon(0% 0%, 100% 0%, 70% 25%, 100% 25%, 60% 50%, 90% 50%, 50% 75%, 80% 75%, 40% 100%, 0% 100%, 30% 80%, 0% 80%, 40% 55%, 0% 55%, 50% 30%, 0% 30%);
+}
+
+.lightning-3 {
+  top: 25%;
+  left: 70%;
+  width: 180px;
+  height: 300px;
+  animation: zigzagLightning3 5s infinite 2s;
+}
+
+.lightning-3::before {
+  width: 5px;
+  height: 100%;
+  transform: skew(-10deg);
+  clip-path: polygon(0% 0%, 100% 0%, 80% 20%, 100% 20%, 90% 45%, 100% 45%, 70% 70%, 100% 70%, 60% 100%, 0% 100%, 40% 75%, 0% 75%, 60% 50%, 0% 50%, 70% 25%, 0% 25%);
+}
+
+.lightning-4 {
+  top: 5%;
+  left: 50%;
+  width: 120px;
+  height: 250px;
+  animation: zigzagLightning4 3.5s infinite 0.5s;
+}
+
+.lightning-4::before {
+  width: 3px;
+  height: 100%;
+  transform: skew(25deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 35%, 100% 35%, 75% 65%, 100% 65%, 65% 100%, 0% 100%, 35% 70%, 0% 70%, 45% 40%, 0% 40%);
+}
+
+.lightning-5 {
+  top: 30%;
+  left: 10%;
+  width: 160px;
+  height: 200px;
+  animation: zigzagLightning5 4.5s infinite 1.5s;
+}
+
+.lightning-5::before {
+  width: 4px;
+  height: 100%;
+  transform: skew(-30deg);
+  clip-path: polygon(0% 0%, 100% 0%, 90% 40%, 100% 40%, 80% 80%, 100% 80%, 70% 100%, 0% 100%, 30% 85%, 0% 85%, 40% 45%, 0% 45%);
+}
+
+.lightning-6 {
+  top: 20%;
+  right: 10%;
+  width: 140px;
+  height: 280px;
+  animation: zigzagLightning6 3.8s infinite 2.5s;
+}
+
+.lightning-6::before {
+  width: 3px;
+  height: 100%;
+  transform: skew(15deg);
+  clip-path: polygon(0% 0%, 100% 0%, 80% 30%, 100% 30%, 90% 60%, 100% 60%, 75% 100%, 0% 100%, 25% 65%, 0% 65%, 35% 35%, 0% 35%);
+}
+
+.electric-arcs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.arc {
+  position: absolute;
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffff00, #ffffff, #ffff00, transparent);
+  border-radius: 2px;
+  opacity: 0;
+  box-shadow: 0 0 10px #ffff00;
+}
+
+.arc-1 {
+  transform: rotate(0deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite;
+}
+
+.arc-2 {
+  transform: rotate(45deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 0.3s;
+}
+
+.arc-3 {
+  transform: rotate(90deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 0.6s;
+}
+
+.arc-4 {
+  transform: rotate(135deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 0.9s;
+}
+
+.arc-5 {
+  transform: rotate(180deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 1.2s;
+}
+
+.arc-6 {
+  transform: rotate(225deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 1.5s;
+}
+
+.arc-7 {
+  transform: rotate(270deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 1.8s;
+}
+
+.arc-8 {
+  transform: rotate(315deg) translateX(-75px);
+  animation: arcBurst 2.5s infinite 2.1s;
+}
+.cracked-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(to top, #1a1a1a 0%, #2a2a2a 40%, transparent 100%);
+  z-index: 2;
+}
+
+.ground-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center bottom, rgba(255, 255, 0, 0.4) 0%, rgba(255, 255, 0, 0.2) 50%, transparent 80%);
+  animation: intensePulse 1.5s ease-in-out infinite;
+}
+
+.crack {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #ffff00, #ffffff, #ffff00, transparent);
+  height: 3px;
+  bottom: 5%;
+  border-radius: 2px;
+  animation: crackFlash 2s ease-in-out infinite;
+  box-shadow: 0 0 10px #ffff00;
+}
+
+.crack-1 {
+  left: 15%;
+  width: 250px;
+  transform: rotate(-10deg);
+  animation-delay: 0s;
+}
+
+.crack-2 {
+  right: 20%;
+  width: 200px;
+  transform: rotate(15deg);
+  animation-delay: 0.5s;
+}
+
+.crack-3 {
+  left: 45%;
+  width: 180px;
+  transform: rotate(-5deg);
+  animation-delay: 1s;
+}
+
+.crack-4 {
+  left: 60%;
+  width: 220px;
+  transform: rotate(8deg);
+  animation-delay: 1.5s;
+}
+
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffff00, #ffffff);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatUp 6s linear infinite;
+  box-shadow: 0 0 8px #ffff00;
+}
+.particle-1 {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  left: 40%;
+  animation-delay: 1s;
+}
+
+.particle-3 {
+  left: 60%;
+  animation-delay: 2s;
+}
+
+.particle-4 {
+  left: 80%;
+  animation-delay: 3s;
+}
+
+.particle-5 {
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.particle-6 {
+  left: 70%;
+  animation-delay: 5s;
+}
+.pikachu-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+.energy-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgba(255, 255, 0, 0.6);
+  border-radius: 50%;
+  opacity: 0;
+}
+.ring-1 {
+  width: 150px;
+  height: 150px;
+  animation: pulseRing 2s ease-out infinite;
+}
+.ring-2 {
+  width: 200px;
+  height: 200px;
+  animation: pulseRing 2s ease-out infinite 0.5s;
+}
+.ring-3 {
+  width: 250px;
+  height: 250px;
+  animation: pulseRing 2s ease-out infinite 1s;
+}
+
+.pikachu-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(255, 255, 0, 0.6) 0%, rgba(255, 255, 0, 0.3) 40%, rgba(255, 255, 0, 0.1) 70%, transparent 100%);
+  border-radius: 50%;
+  animation: flickerGlow 1s ease-in-out infinite alternate;
+  filter: blur(2px);
+}
+
+.css-pikachu {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  z-index: 7;
+  animation: pikachuBounce 2s ease-in-out infinite;
+}
+
+.ear {
+  position: absolute;
+  width: 25px;
+  height: 40px;
+  background: #ffde00;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 2px solid #ff6b35;
+  top: -15px;
+}
+
+.ear-left {
+  left: 15px;
+  transform: rotate(-30deg);
+}
+
+.ear-right {
+  right: 15px;
+  transform: rotate(30deg);
+}
+
+.ear-tip {
+  position: absolute;
+  width: 12px;
+  height: 15px;
+  background: #2c2c2c;
+  border-radius: 50%;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.head {
+  position: absolute;
+  width: 80px;
+  height: 75px;
+  background: #ffde00;
+  border-radius: 50%;
+  border: 3px solid #ff6b35;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 0 -10px 0 rgba(255, 180, 0, 0.3);
+}
+
+.eye {
+  position: absolute;
+  width: 12px;
+  height: 15px;
+  background: #2c2c2c;
+  border-radius: 50%;
+  top: 20px;
+}
+
+.eye-left {
+  left: 18px;
+}
+
+.eye-right {
+  right: 18px;
+}
+
+.cheek {
+  position: absolute;
+  width: 15px;
+  height: 12px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  top: 30px;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+  animation: cheekGlow 2s ease-in-out infinite alternate;
+}
+
+.cheek-left {
+  left: 5px;
+}
+
+.cheek-right {
+  right: 5px;
+}
+
+.mouth {
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  background: #2c2c2c;
+  border-radius: 0 0 50px 50px;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.body {
+  position: absolute;
+  width: 65px;
+  height: 55px;
+  background: #ffde00;
+  border-radius: 50%;
+  border: 3px solid #ff6b35;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 0 -10px 0 rgba(255, 180, 0, 0.3);
+}
+
+.arm {
+  position: absolute;
+  width: 18px;
+  height: 35px;
+  background: #ffde00;
+  border-radius: 50px;
+  border: 2px solid #ff6b35;
+  top: 5px;
+}
+
+.arm-left {
+  left: -12px;
+  transform: rotate(-20deg);
+}
+
+.arm-right {
+  right: -12px;
+  transform: rotate(20deg);
+}
+.belly {
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  background: #fff3a0;
+  border-radius: 50%;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.leg {
+  position: absolute;
+  width: 20px;
+  height: 25px;
+  background: #ffde00;
+  border-radius: 50px;
+  border: 2px solid #ff6b35;
+  top: 115px;
+}
+
+.leg-left {
+  left: 25px;
+}
+
+.leg-right {
+  right: 25px;
+}
+.tail {
+  position: absolute;
+  right: -25px;
+  top: 60px;
+  width: 30px;
+  height: 45px;
+  z-index: 6;
+}
+
+.tail-segment {
+  position: absolute;
+  background: #ffde00;
+  border: 2px solid #ff6b35;
+}
+
+.segment-1 {
+  width: 8px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  transform: rotate(15deg);
+  border-radius: 4px;
+}
+
+.segment-2 {
+  width: 12px;
+  height: 15px;
+  top: 15px;
+  left: 8px;
+  transform: rotate(-30deg);
+  border-radius: 4px;
+}
+
+.segment-3 {
+  width: 10px;
+  height: 18px;
+  top: 25px;
+  left: 15px;
+  transform: rotate(45deg);
+  border-radius: 4px;
+}
+.electric-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent, #ffff00, transparent, #ffffff, transparent);
+  animation: rotateAura 2s linear infinite;
+  z-index: 5;
+}
+
+@keyframes screenRumble {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  10% { transform: translateX(-2px) translateY(1px); }
+  20% { transform: translateX(2px) translateY(-1px); }
+  30% { transform: translateX(-1px) translateY(2px); }
+  40% { transform: translateX(1px) translateY(-2px); }
+  50% { transform: translateX(-2px) translateY(-1px); }
+  60% { transform: translateX(2px) translateY(1px); }
+  70% { transform: translateX(-1px) translateY(-2px); }
+  80% { transform: translateX(1px) translateY(2px); }
+  90% { transform: translateX(-2px) translateY(-1px); }
+}
+
+@keyframes cloudDrift {
+  0%, 100% { transform: translateX(0) scale(1); opacity: 0.8; }
+  50% { transform: translateX(30px) scale(1.1); opacity: 1; }
+}
+
+@keyframes backgroundFlicker {
+  0%, 85%, 100% { opacity: 0; }
+  5%, 15% { opacity: 0.3; }
+  10% { opacity: 0.6; }
+}
+
+@keyframes zigzagLightning1 {
+  0%, 90%, 100% { opacity: 0; }
+  5%, 20% { opacity: 1; }
+}
+
+@keyframes zigzagLightning2 {
+  0%, 88%, 100% { opacity: 0; }
+  8%, 25% { opacity: 1; }
+}
+
+@keyframes zigzagLightning3 {
+  0%, 85%, 100% { opacity: 0; }
+  10%, 30% { opacity: 1; }
+}
+
+@keyframes zigzagLightning4 {
+  0%, 92%, 100% { opacity: 0; }
+  3%, 18% { opacity: 1; }
+}
+
+@keyframes zigzagLightning5 {
+  0%, 87%, 100% { opacity: 0; }
+  7%, 22% { opacity: 1; }
+}
+
+@keyframes zigzagLightning6 {
+  0%, 89%, 100% { opacity: 0; }
+  6%, 19% { opacity: 1; }
+}
+
+@keyframes arcBurst {
+  0%, 70%, 100% { 
+    opacity: 0; 
+    transform: scale(1) rotate(var(--rotation, 0deg)) translateX(-75px); 
+  }
+  10%, 30% { 
+    opacity: 1; 
+    transform: scale(1.3) rotate(var(--rotation, 0deg)) translateX(-75px); 
+  }
+}
+
+@keyframes intensePulse {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.9; 
+    transform: scale(1.2);
+  }
+}
+
+@keyframes crackFlash {
+  0%, 100% { 
+    opacity: 0.3; 
+    box-shadow: 0 0 10px #ffff00; 
+  }
+  50% { 
+    opacity: 1; 
+    box-shadow: 0 0 25px #ffffff, 0 0 35px #ffff00; 
+  }
+}
+
+@keyframes floatUp {
+  0% { 
+    bottom: 0%; 
+    opacity: 0; 
+    transform: translateX(0); 
+  }
+  10%, 90% { 
+    opacity: 1; 
+  }
+  100% { 
+    bottom: 100%; 
+    opacity: 0; 
+    transform: translateX(20px); 
+  }
+}
+
+@keyframes pulseRing {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.5); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1.5); 
+    opacity: 0; 
+  }
+}
+
+@keyframes flickerGlow {
+  0% { 
+    opacity: 0.6; 
+    filter: blur(2px) brightness(1); 
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(3px) brightness(1.5); 
+  }
+}
+
+@keyframes pikachuBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes cheekGlow {
+  0% { 
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.8); 
+  }
+  100% { 
+    box-shadow: 0 0 20px rgba(255, 107, 107, 1), 0 0 30px rgba(255, 107, 107, 0.6); 
+  }
+}
+
+@keyframes rotateAura {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .pikachu-container {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  
+  .lightning-bolt {
+    width: 80px !important;
+    height: 200px !important;
+  }
+  
+  .energy-ring {
+    width: 80% !important;
+    height: 80% !important;
+  }
+  
+  .pikachu-glow {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .electric-aura {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pikachu-container {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  
+  .lightning-bolt {
+    width: 60px !important;
+    height: 150px !important;
+  }
+  
+  .arc {
+    width: 80px;
+  }
+}
